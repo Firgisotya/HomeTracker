@@ -13,8 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('penghunis', function (Blueprint $table) {
+        Schema::create('penghuni', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_lengkap');
+            $table->enum('jenis_kelamin', ['Laki-Laki', 'Perempuan']);
+            $table->string('no_telepon')->unique();
+            $table->enum('status_penguni', ['kontrak', 'tetap']);
+            $table->enum('status_pernikahan', ['belum menikah', 'menikah']);
+            $table->string('foto_ktp');
             $table->timestamps();
         });
     }

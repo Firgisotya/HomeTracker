@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rumahs', function (Blueprint $table) {
+        Schema::create('rumah', function (Blueprint $table) {
             $table->id();
+            $table->string('nomor_rumah')->unique();
+            $table->enum('status_rumah', ['dihuni', 'tidak dihuni']);
             $table->timestamps();
         });
     }

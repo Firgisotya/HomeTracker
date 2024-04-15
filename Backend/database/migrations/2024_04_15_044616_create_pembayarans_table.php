@@ -13,8 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pembayarans', function (Blueprint $table) {
+        Schema::create('pembayaran', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('penghuni_id')->constrained('penghuni');
+            $table->enum('jenis_pembayaran', ['iuran kebersihan', 'iuran satpam']);
+            $table->integer('jumlah_pembayaran');
+            $table->date('tanggal_pembayaran');
+            $table->enum('periode_pembayaran', ['bulan', 'tahun']);
+            $table->enum('status_pembayaran', ['lunas', 'belum lunas']);
             $table->timestamps();
         });
     }

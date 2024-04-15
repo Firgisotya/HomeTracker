@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('report_summaries', function (Blueprint $table) {
             $table->id();
+            $table->string('bulan');
+            $table->string('tahun');
+            $table->integer('pemasukan');
+            $table->integer('pengeluaran');
             $table->timestamps();
         });
     }

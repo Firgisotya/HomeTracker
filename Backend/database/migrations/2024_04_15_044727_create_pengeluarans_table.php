@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pengeluarans', function (Blueprint $table) {
+        Schema::create('pengeluaran', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('report_id')->constrained('report_summaries');
+            $table->enum('jenis_pengeluaran', ['gaji satpam', 'listrik pos satpam']);
+            $table->integer('jumlah_pengeluaran');
             $table->timestamps();
         });
     }
