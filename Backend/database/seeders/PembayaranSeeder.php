@@ -26,7 +26,7 @@ class PembayaranSeeder extends Seeder
             ],
             [
                 'penghuni_id' => 1,
-                'jenis_pembayaran' => 'iuran satpam',
+                'jenis_pembayaran' => 'iuran keamanan',
                 'jumlah_pembayaran' => 100000,
                 'tanggal_pembayaran' => '2021-01-01',
                 'periode_pembayaran' => 'bulan',
@@ -42,7 +42,7 @@ class PembayaranSeeder extends Seeder
             ],
             [
                 'penghuni_id' => 2,
-                'jenis_pembayaran' => 'iuran satpam',
+                'jenis_pembayaran' => 'iuran keamanan',
                 'jumlah_pembayaran' => 100000,
                 'tanggal_pembayaran' => '2022-01-01',
                 'periode_pembayaran' => 'bulan',
@@ -58,7 +58,7 @@ class PembayaranSeeder extends Seeder
             ],
             [
                 'penghuni_id' => 3,
-                'jenis_pembayaran' => 'iuran satpam',
+                'jenis_pembayaran' => 'iuran keamanan',
                 'jumlah_pembayaran' => 100000,
                 'tanggal_pembayaran' => '2023-01-01',
                 'periode_pembayaran' => 'bulan',

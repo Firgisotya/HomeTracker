@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\PenghuniRumah;
+use App\Http\Controllers\Controller;
+
+use App\Models\Pengeluaran;
 use Illuminate\Http\Request;
 
-class PenghuniRumahController extends Controller
+class PengeluaranController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,18 @@ class PenghuniRumahController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $data = Pengeluaran::with('report')->get();
+            return response()->json([
+                'status' => 'success',
+                'data' => $data
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -41,10 +54,10 @@ class PenghuniRumahController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\PenghuniRumah  $penghuniRumah
+     * @param  \App\Models\Pengeluaran  $pengeluaran
      * @return \Illuminate\Http\Response
      */
-    public function show(PenghuniRumah $penghuniRumah)
+    public function show(Pengeluaran $pengeluaran)
     {
         //
     }
@@ -52,10 +65,10 @@ class PenghuniRumahController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PenghuniRumah  $penghuniRumah
+     * @param  \App\Models\Pengeluaran  $pengeluaran
      * @return \Illuminate\Http\Response
      */
-    public function edit(PenghuniRumah $penghuniRumah)
+    public function edit(Pengeluaran $pengeluaran)
     {
         //
     }
@@ -64,10 +77,10 @@ class PenghuniRumahController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PenghuniRumah  $penghuniRumah
+     * @param  \App\Models\Pengeluaran  $pengeluaran
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PenghuniRumah $penghuniRumah)
+    public function update(Request $request, Pengeluaran $pengeluaran)
     {
         //
     }
@@ -75,10 +88,10 @@ class PenghuniRumahController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\PenghuniRumah  $penghuniRumah
+     * @param  \App\Models\Pengeluaran  $pengeluaran
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PenghuniRumah $penghuniRumah)
+    public function destroy(Pengeluaran $pengeluaran)
     {
         //
     }

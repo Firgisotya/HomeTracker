@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->id();
             $table->foreignId('penghuni_id')->constrained('penghuni');
-            $table->enum('jenis_pembayaran', ['iuran kebersihan', 'iuran satpam']);
+            $table->enum('jenis_pembayaran', ['iuran kebersihan', 'iuran keamanan']);
             $table->integer('jumlah_pembayaran');
             $table->date('tanggal_pembayaran');
             $table->enum('periode_pembayaran', ['bulan', 'tahun']);

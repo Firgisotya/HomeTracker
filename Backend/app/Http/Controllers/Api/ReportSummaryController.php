@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Pembayaran;
+use App\Http\Controllers\Controller;
+
+use App\Models\ReportSummary;
 use Illuminate\Http\Request;
 
-class PembayaranController extends Controller
+class ReportSummaryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,18 @@ class PembayaranController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $data = ReportSummary::all();
+            return response()->json([
+                'status' => 'success',
+                'data' => $data
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -41,10 +54,10 @@ class PembayaranController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pembayaran  $pembayaran
+     * @param  \App\Models\ReportSummary  $reportSummary
      * @return \Illuminate\Http\Response
      */
-    public function show(Pembayaran $pembayaran)
+    public function show(ReportSummary $reportSummary)
     {
         //
     }
@@ -52,10 +65,10 @@ class PembayaranController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pembayaran  $pembayaran
+     * @param  \App\Models\ReportSummary  $reportSummary
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pembayaran $pembayaran)
+    public function edit(ReportSummary $reportSummary)
     {
         //
     }
@@ -64,10 +77,10 @@ class PembayaranController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pembayaran  $pembayaran
+     * @param  \App\Models\ReportSummary  $reportSummary
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pembayaran $pembayaran)
+    public function update(Request $request, ReportSummary $reportSummary)
     {
         //
     }
@@ -75,10 +88,10 @@ class PembayaranController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pembayaran  $pembayaran
+     * @param  \App\Models\ReportSummary  $reportSummary
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pembayaran $pembayaran)
+    public function destroy(ReportSummary $reportSummary)
     {
         //
     }

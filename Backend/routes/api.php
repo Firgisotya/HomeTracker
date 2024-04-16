@@ -1,5 +1,12 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\PembayaranController;
+use App\Http\Controllers\Api\PengeluaranController;
+use App\Http\Controllers\Api\PenghuniController;
+use App\Http\Controllers\Api\PenghuniRumahController;
+use App\Http\Controllers\Api\ReportSummaryController;
+use App\Http\Controllers\Api\RumahController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +21,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('/auth')->group(function(){
+    Route::post('/login', [AuthController::class, 'login']);
+});
+
+Route::middleware('auth:sanctum')->group(function(){
+    Route::apiResource('/penghuni', PenghuniController::class);
+    Route::apiResource('/rumah', RumahController::class);
+    Route::apiResource('/penghuni_rumah', PenghuniRumahController::class);
+    Route::apiResource('/pembayaran', PembayaranController::class);
+    Route::get('/report_summary', [ReportSummaryController::class, 'index']);
+    Route::get('/pengeluaran', [PengeluaranController::class, 'index']);
 });
