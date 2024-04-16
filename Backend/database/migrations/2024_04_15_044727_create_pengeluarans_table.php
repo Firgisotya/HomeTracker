@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('pengeluaran', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('report_id')->constrained('report_summaries');
+            $table->foreignId('report_id')->constrained('report_summary');
             $table->enum('jenis_pengeluaran', ['gaji satpam', 'listrik pos satpam']);
             $table->integer('jumlah_pengeluaran');
             $table->timestamps();

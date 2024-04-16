@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Pengeluaran extends Model
 {
     use HasFactory;
+    protected $table = 'pengeluaran';
+    protected $guarded = ['id'];
+
+    public function report()
+    {
+        return $this->belongsTo(ReportSummary::class, 'report_id');
+    }
 }
