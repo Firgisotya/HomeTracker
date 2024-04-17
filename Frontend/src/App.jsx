@@ -5,6 +5,7 @@ import Login from "./pages/auth/Login";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 import Home from "./pages/Home";
 import Main from "./layouts/Main";
+import PenghuniRoutes from "./routes/PenghuniRoutes";
 
 function App() {
   return (
@@ -23,6 +24,13 @@ function App() {
                 <Home />
               </Main>
             } />
+
+            <Route path="penghuni/*" element={
+              <Main>
+                <PenghuniRoutes />
+              </Main>
+            } />
+
           </Route>
 
         </Routes>

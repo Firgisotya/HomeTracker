@@ -29,7 +29,7 @@ class PenghuniRequest extends FormRequest
             'no_telepon' => 'required|string',
             'status_penghuni' => 'required|string',
             'status_pernikahan' => 'required|string',
-            'foto_ktp' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'foto_ktp' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ];
     }
 }

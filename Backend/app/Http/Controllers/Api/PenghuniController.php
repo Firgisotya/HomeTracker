@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PenghuniRequest;
 use App\Models\Penghuni;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PenghuniController extends Controller
 {
@@ -117,14 +118,29 @@ class PenghuniController extends Controller
     {
         try {
             $data = Penghuni::find($id);
-            dd($data);
+
             if(!$data){
                 return response()->json([
                     'status' => 'error',
                     'message' => 'Data penghuni tidak ditemukan'
                 ], 404);
             }
-            // $data->update($request->all());
+            $data->nama_lengkap = $request->nama_lengkap;
+            $data->jenis_kelamin = $request->jenis_kelamin;
+            $data->no_telepon = $request->no_telepon;
+            $data->status_penghuni = $request->status_penghuni;
+            $data->status_pernikahan = $request->status_pernikahan;
+            if ($request->hasFile('foto_ktp')) {
+                // Delete old photo if it exists
+                if ($data->foto_ktp) {
+                    Storage::disk('public')->delete($data->foto_ktp);
+                    $data->foto_ktp = $request->file('foto_ktp')->store('foto_ktp', 'public');
+                } else {
+                    $data->foto_ktp = $request->file('foto_ktp')->store('foto_ktp', 'public');
+                }
+
+            }
+            $data->save();
             return response()->json([
                 'status' => 'success',
                 'message' => 'Data penghuni berhasil diubah',
