@@ -6,37 +6,54 @@ import ProtectedRoutes from "./utils/ProtectedRoutes";
 import Home from "./pages/Home";
 import Main from "./layouts/Main";
 import PenghuniRoutes from "./routes/PenghuniRoutes";
+import RumahRoutes from "./routes/RumahRoutes";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={
-            <MainAuth>
-              <Login />
-            </MainAuth>
-          } />
+          <Route
+            path="/"
+            element={
+              <MainAuth>
+                <Login />
+              </MainAuth>
+            }
+          />
 
-          <Route element={<ProtectedRoutes />} >
-            <Route path="/dashboard" element={
-              <Main>
-                <Home />
-              </Main>
-            } />
+          <Route element={<ProtectedRoutes />}>
+            <Route
+              path="/dashboard"
+              element={
+                <Main>
+                  <Home />
+                </Main>
+              }
+            />
 
-            <Route path="penghuni/*" element={
-              <Main>
-                <PenghuniRoutes />
-              </Main>
-            } />
+            <Route
+              path="penghuni/*"
+              element={
+                <Main>
+                  <PenghuniRoutes />
+                </Main>
+              }
+            />
 
+            <Route
+              path="rumah/*"
+              element={
+                <Main>
+                  <RumahRoutes />
+                </Main>
+              }
+            />
           </Route>
-
         </Routes>
       </BrowserRouter>
     </>
-  )
+  );
 }
 
 export default App;
