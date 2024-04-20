@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('nama_lengkap');
             $table->enum('jenis_kelamin', ['Laki-Laki', 'Perempuan']);
             $table->string('no_telepon')->unique();
-            $table->enum('status_penghuni', ['kontrak', 'tetap']);
-            $table->enum('status_pernikahan', ['belum menikah', 'menikah']);
+            $table->enum('status_penghuni', ['Kontrak', 'Tetap']);
+            $table->enum('status_pernikahan', ['Belum Menikah', 'Menikah']);
             $table->string('foto_ktp');
             $table->timestamps();
         });

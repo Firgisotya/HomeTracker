@@ -18,15 +18,15 @@ class RumahSeeder extends Seeder
         DB::table('rumah')->insert([
             [
                 'nomor_rumah' => 'A1',
-                'status_rumah' => 'dihuni'
+                'status_rumah' => 'Dihuni'
             ],
             [
                 'nomor_rumah' => 'B1',
-                'status_rumah' => 'tidak dihuni'
+                'status_rumah' => 'Tidak Dihuni'
             ],
             [
                 'nomor_rumah' => 'C1',
-                'status_rumah' => 'dihuni'
+                'status_rumah' => 'Dihuni'
             ],
         ]);
     }

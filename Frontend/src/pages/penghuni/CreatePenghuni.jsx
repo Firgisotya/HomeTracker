@@ -144,8 +144,8 @@ const CreatePenghuni = () => {
                         onChange={(e) => setStatusPenghuni(e.target.value)}
                       >
                         <option value="">Pilih Status Penghuni</option>
-                        <option value="kontrak">Kontrak</option>
-                        <option value="tetap">Tetap</option>
+                        <option value="Kontrak">Kontrak</option>
+                        <option value="Tetap">Tetap</option>
                       </select>
                     </div>
                   </div>
@@ -160,8 +160,8 @@ const CreatePenghuni = () => {
                         onChange={(e) => setStatusPernikahan(e.target.value)}
                       >
                         <option value="">Pilih Status Pernikahan</option>
-                        <option value="menikah">Menikah</option>
-                        <option value="belum menikah">Belum Menikah</option>
+                        <option value="Menikah">Menikah</option>
+                        <option value="Belum Menikah">Belum Menikah</option>
                       </select>
                     </div>
                   </div>

@@ -7,6 +7,10 @@ import Home from "./pages/Home";
 import Main from "./layouts/Main";
 import PenghuniRoutes from "./routes/PenghuniRoutes";
 import RumahRoutes from "./routes/RumahRoutes";
+import PenghuniRumahRoutes from "./routes/PenghuniRumahRoutes";
+import PembayaranRoutes from "./routes/PembayaranRoutes";
+import ReportSummaryRoutes from "./routes/ReportSummaryRoutes";
+import PengeluaranRoutes from "./routes/PengeluaranRoutes";
 
 function App() {
   return (
@@ -46,6 +50,42 @@ function App() {
               element={
                 <Main>
                   <RumahRoutes />
+                </Main>
+              }
+            />
+
+            <Route
+              path="penghuni_rumah/*"
+              element={
+                <Main>
+                  <PenghuniRumahRoutes />
+                </Main>
+              }
+            />
+
+            <Route
+              path="pembayaran/*"
+              element={
+                <Main>
+                  <PembayaranRoutes />
+                </Main>
+              }
+            />
+
+            <Route
+              path="report_summary/*"
+              element={
+                <Main>
+                  <ReportSummaryRoutes />
+                </Main>
+              }
+            />
+
+            <Route
+              path="pengeluaran/*"
+              element={
+                <Main>
+                  <PengeluaranRoutes />
                 </Main>
               }
             />

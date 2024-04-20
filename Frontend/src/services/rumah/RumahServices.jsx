@@ -26,6 +26,12 @@ export const getRumahById = async (id) => {
     return response.data.data;
 }
 
+export const historyRumahById = async (id) => {
+    const authHeader = await getAuthHeader()
+    const response = await axios.get(`${apiURL}/rumah/${id}/history`, authHeader);
+    return response.data.data;
+}
+
 export const createRumah = async (data) => {
     const authHeader = await getAuthHeader()
     const response = await axios.post(`${apiURL}/rumah`, data, authHeader);

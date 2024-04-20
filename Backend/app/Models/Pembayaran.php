@@ -11,8 +11,9 @@ class Pembayaran extends Model
     protected $table = 'pembayaran';
     protected $guarded = ['id'];
 
-    public function penghuni()
+    public function penghuni_rumah()
     {
-        return $this->belongsTo(Penghuni::class, 'penghuni_id');
+        return $this->belongsTo(PenghuniRumah::class, 'penghuni_rumah_id');
     }
+
 }

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('rumah', function (Blueprint $table) {
             $table->id();
             $table->string('nomor_rumah')->unique();
-            $table->enum('status_rumah', ['dihuni', 'tidak dihuni']);
+            $table->enum('status_rumah', ['Dihuni', 'Tidak Dihuni']);
             $table->timestamps();
         });
     }

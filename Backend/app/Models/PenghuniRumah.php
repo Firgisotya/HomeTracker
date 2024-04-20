@@ -20,4 +20,9 @@ class PenghuniRumah extends Model
     {
         return $this->belongsTo(Rumah::class, 'rumah_id');
     }
+
+    public function pembayaran()
+    {
+        return $this->hasMany(Pembayaran::class, 'penghuni_rumah_id');
+    }
 }

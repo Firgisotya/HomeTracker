@@ -17,7 +17,7 @@ class PenghuniRumahController extends Controller
     public function index()
     {
         try {
-            $data = PenghuniRumah::all();
+            $data = PenghuniRumah::with('penghuni', 'rumah')->get();
             return response()->json([
                 'status' => 'success',
                 'data' => $data

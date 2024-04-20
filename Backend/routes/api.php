@@ -28,8 +28,9 @@ Route::prefix('/auth')->group(function(){
 Route::middleware('auth:sanctum')->group(function(){
     Route::apiResource('/penghuni', PenghuniController::class);
     Route::apiResource('/rumah', RumahController::class);
+    Route::get('/rumah/{id}/history', [RumahController::class, 'history']);
     Route::apiResource('/penghuni_rumah', PenghuniRumahController::class);
     Route::apiResource('/pembayaran', PembayaranController::class);
     Route::get('/report_summary', [ReportSummaryController::class, 'index']);
-    Route::get('/pengeluaran', [PengeluaranController::class, 'index']);
+    Route::apiResource('/pengeluaran', PengeluaranController::class);
 });

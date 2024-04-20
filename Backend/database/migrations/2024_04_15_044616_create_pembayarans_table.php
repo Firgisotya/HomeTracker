@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('penghuni_id')->constrained('penghuni');
-            $table->enum('jenis_pembayaran', ['iuran kebersihan', 'iuran keamanan']);
+            $table->foreignId('penghuni_rumah_id')->constrained('penghuni_rumah');
+            $table->enum('jenis_pembayaran', ['Iuran Kebersihan', 'Iuran Keamanan']);
             $table->integer('jumlah_pembayaran');
             $table->date('tanggal_pembayaran');
-            $table->enum('periode_pembayaran', ['bulan', 'tahun']);
-            $table->enum('status_pembayaran', ['lunas', 'belum lunas']);
+            $table->enum('periode_pembayaran', ['Bulan', 'Tahun']);
+            $table->enum('status_pembayaran', ['Lunas', 'Belum Lunas']);
             $table->timestamps();
         });
     }

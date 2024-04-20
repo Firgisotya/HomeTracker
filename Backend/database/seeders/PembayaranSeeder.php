@@ -17,52 +17,52 @@ class PembayaranSeeder extends Seeder
     {
         DB::table('pembayaran')->insert([
             [
-                'penghuni_id' => 1,
-                'jenis_pembayaran' => 'iuran kebersihan',
+                'penghuni_rumah_id' => 1,
+                'jenis_pembayaran' => 'Iuran Kebersihan',
                 'jumlah_pembayaran' => 15000,
                 'tanggal_pembayaran' => '2021-01-01',
-                'periode_pembayaran' => 'bulan',
-                'status_pembayaran' => 'lunas'
+                'periode_pembayaran' => 'Bulan',
+                'status_pembayaran' => 'Lunas'
             ],
             [
-                'penghuni_id' => 1,
+                'penghuni_rumah_id' => 1,
                 'jenis_pembayaran' => 'iuran keamanan',
                 'jumlah_pembayaran' => 100000,
                 'tanggal_pembayaran' => '2021-01-01',
-                'periode_pembayaran' => 'bulan',
-                'status_pembayaran' => 'lunas'
+                'periode_pembayaran' => 'Bulan',
+                'status_pembayaran' => 'Lunas'
             ],
             [
-                'penghuni_id' => 2,
-                'jenis_pembayaran' => 'iuran kebersihan',
+                'penghuni_rumah_id' => 2,
+                'jenis_pembayaran' => 'Iuran Kebersihan',
                 'jumlah_pembayaran' => 15000,
                 'tanggal_pembayaran' => '2022-01-01',
-                'periode_pembayaran' => 'bulan',
-                'status_pembayaran' => 'lunas'
+                'periode_pembayaran' => 'Bulan',
+                'status_pembayaran' => 'Lunas'
             ],
             [
-                'penghuni_id' => 2,
+                'penghuni_rumah_id' => 2,
                 'jenis_pembayaran' => 'iuran keamanan',
                 'jumlah_pembayaran' => 100000,
                 'tanggal_pembayaran' => '2022-01-01',
-                'periode_pembayaran' => 'bulan',
-                'status_pembayaran' => 'lunas'
+                'periode_pembayaran' => 'Bulan',
+                'status_pembayaran' => 'Lunas'
             ],
             [
-                'penghuni_id' => 3,
-                'jenis_pembayaran' => 'iuran kebersihan',
+                'penghuni_rumah_id' => 3,
+                'jenis_pembayaran' => 'Iuran Kebersihan',
                 'jumlah_pembayaran' => 15000,
                 'tanggal_pembayaran' => '2023-01-01',
-                'periode_pembayaran' => 'bulan',
-                'status_pembayaran' => 'lunas'
+                'periode_pembayaran' => 'Bulan',
+                'status_pembayaran' => 'Lunas'
             ],
             [
-                'penghuni_id' => 3,
+                'penghuni_rumah_id' => 3,
                 'jenis_pembayaran' => 'iuran keamanan',
                 'jumlah_pembayaran' => 100000,
                 'tanggal_pembayaran' => '2023-01-01',
-                'periode_pembayaran' => 'bulan',
-                'status_pembayaran' => 'lunas'
+                'periode_pembayaran' => 'Bulan',
+                'status_pembayaran' => 'Lunas'
             ],
         ]);
     }

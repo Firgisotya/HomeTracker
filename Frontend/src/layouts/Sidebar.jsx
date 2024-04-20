@@ -125,19 +125,19 @@ const Sidebar = () => {
               </li>
               <li className={`menu-item ${active === "/penghuni" ? "active" : ""}`}>
                 <Link to={'/penghuni'} className="menu-link" onClick={() => handleActive("/penghuni")}>
-                  <i className="menu-icon tf-icons bx bx-home-circle" />
+                  <i className="menu-icon tf-icons bx bx-user" />
                   <div data-i18n="Analytics">Penghuni</div>
                 </Link>
               </li>
               <li className={`menu-item ${active === "/rumah" ? "active" : ""}`}>
                 <Link to={'/rumah'} className="menu-link" onClick={() => handleActive("/rumah")}>
-                  <i className="menu-icon tf-icons bx bx-home-circle" />
+                  <i className="menu-icon tf-icons bx bx-home" />
                   <div data-i18n="Analytics">Rumah</div>
                 </Link>
               </li>
               <li className={`menu-item ${active === "/penghuni_rumah" ? "active" : ""}`}>
                 <Link to={'/penghuni_rumah'} className="menu-link" onClick={() => handleActive("/penghuni_rumah")}>
-                  <i className="menu-icon tf-icons bx bx-home-circle" />
+                  <i className="menu-icon tf-icons bx bx-home-heart" />
                   <div data-i18n="Analytics">Penghuni Rumah</div>
                 </Link>
               </li>
@@ -148,7 +148,7 @@ const Sidebar = () => {
               </li>
               <li className={`menu-item ${active === "/report_summary" ? "active" : ""}`}>
                 <Link to={'/report_summary'} className="menu-link" onClick={() => handleActive("/report_summary")}>
-                  <i className="menu-icon tf-icons bx bx-home-circle" />
+                  <i className="menu-icon tf-icons bx bx-bar-chart-square" />
                   <div data-i18n="Analytics">Report Summary</div>
                 </Link>
               </li>
@@ -159,13 +159,13 @@ const Sidebar = () => {
               </li>
               <li className={`menu-item ${active === "/pembayaran" ? "active" : ""}`}>
                 <Link to={'/pembayaran'} className="menu-link" onClick={() => handleActive("/pembayaran")}>
-                  <i className="menu-icon tf-icons bx bx-home-circle" />
+                  <i className="menu-icon tf-icons bx bx-wallet" />
                   <div data-i18n="Analytics">Pembayaran</div>
                 </Link>
               </li>
               <li className={`menu-item ${active === "/pengeluaran" ? "active" : ""}`}>
                 <Link to={'/pengeluaran'} className="menu-link" onClick={() => handleActive("/pengeluaran")}>
-                  <i className="menu-icon tf-icons bx bx-home-circle" />
+                  <i className="menu-icon tf-icons bx bx-wallet" />
                   <div data-i18n="Analytics">Pengeluaran</div>
                 </Link>
               </li>

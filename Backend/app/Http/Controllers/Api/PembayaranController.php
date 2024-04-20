@@ -17,7 +17,7 @@ class PembayaranController extends Controller
     public function index()
     {
         try {
-            $data = Pembayaran::all();
+            $data = Pembayaran::with('penghuni')->get();
             return response()->json([
                 'status' => 'success',
                 'data' => $data
@@ -108,7 +108,7 @@ class PembayaranController extends Controller
     public function show($id)
     {
         try {
-            $data = Pembayaran::find($id);
+            $data = Pembayaran::with('penghuni')->find($id);
             return response()->json([
                 'status' => 'success',
                 'data' => $data
