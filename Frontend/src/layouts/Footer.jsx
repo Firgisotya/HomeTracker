@@ -12,37 +12,7 @@ const Footer = () => {
                       target="_blank"
                       className="footer-link fw-bolder"
                     >
-                      ThemeSelection
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href="https://themeselection.com/license/"
-                      className="footer-link me-4"
-                      target="_blank"
-                    >
-                      License
-                    </a>
-                    <a
-                      href="https://themeselection.com/"
-                      target="_blank"
-                      className="footer-link me-4"
-                    >
-                      More Themes
-                    </a>
-                    <a
-                      href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                      target="_blank"
-                      className="footer-link me-4"
-                    >
-                      Documentation
-                    </a>
-                    <a
-                      href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                      target="_blank"
-                      className="footer-link me-4"
-                    >
-                      Support
+                      Firgi Sotya Izzuddin
                     </a>
                   </div>
                 </div>

@@ -18,11 +18,6 @@ class PengeluaranSeeder extends Seeder
         DB::table('pengeluaran')->insert([
             [
                 'report_id' => 1,
-                'jenis_pengeluaran' => 'Gaji Satpam',
-                'jumlah_pengeluaran' => 4000000,
-            ],
-            [
-                'report_id' => 1,
                 'jenis_pengeluaran' => 'Listrik Pos Satpam',
                 'jumlah_pengeluaran' => 100000,
             ],

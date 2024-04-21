@@ -18,19 +18,73 @@ class ReportSummarySeeder extends Seeder
         DB::table('report_summary')->insert([
             [
                 'bulan' => 'Januari',
-                'tahun' => '2021',
+                'tahun' => '2024',
                 'pemasukan' => 115000,
-                'pengeluaran' => 4100000
+                'pengeluaran' => 55000
             ],
             [
-                'bulan' => 'Januari',
-                'tahun' => '2022',
+                'bulan' => 'Febreari',
+                'tahun' => '2024',
                 'pemasukan' => 115000,
                 'pengeluaran' => 0
             ],
             [
-                'bulan' => 'Januari',
-                'tahun' => '2023',
+                'bulan' => 'Maret',
+                'tahun' => '2024',
+                'pemasukan' => 115000,
+                'pengeluaran' => 0
+            ],
+            [
+                'bulan' => 'April',
+                'tahun' => '2024',
+                'pemasukan' => 115000,
+                'pengeluaran' => 0
+            ],
+            [
+                'bulan' => 'Mei',
+                'tahun' => '2024',
+                'pemasukan' => 1150000,
+                'pengeluaran' => 0
+            ],
+            [
+                'bulan' => 'Juni',
+                'tahun' => '2024',
+                'pemasukan' => 2000000,
+                'pengeluaran' => 0
+            ],
+            [
+                'bulan' => 'Juli',
+                'tahun' => '2024',
+                'pemasukan' => 115000,
+                'pengeluaran' => 0
+            ],
+            [
+                'bulan' => 'Agustus',
+                'tahun' => '2024',
+                'pemasukan' => 115000,
+                'pengeluaran' => 0
+            ],
+            [
+                'bulan' => 'September',
+                'tahun' => '2024',
+                'pemasukan' => 115000,
+                'pengeluaran' => 0
+            ],
+            [
+                'bulan' => 'Oktober',
+                'tahun' => '2024',
+                'pemasukan' => 115000,
+                'pengeluaran' => 0
+            ],
+            [
+                'bulan' => 'November',
+                'tahun' => '2024',
+                'pemasukan' => 115000,
+                'pengeluaran' => 0
+            ],
+            [
+                'bulan' => 'Desember',
+                'tahun' => '2024',
                 'pemasukan' => 115000,
                 'pengeluaran' => 0
             ],

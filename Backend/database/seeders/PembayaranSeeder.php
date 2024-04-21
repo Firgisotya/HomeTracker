@@ -20,7 +20,7 @@ class PembayaranSeeder extends Seeder
                 'penghuni_rumah_id' => 1,
                 'jenis_pembayaran' => 'Iuran Kebersihan',
                 'jumlah_pembayaran' => 15000,
-                'tanggal_pembayaran' => '2021-01-01',
+                'tanggal_pembayaran' => '2024-01-01',
                 'periode_pembayaran' => 'Bulan',
                 'status_pembayaran' => 'Lunas'
             ],
@@ -28,7 +28,7 @@ class PembayaranSeeder extends Seeder
                 'penghuni_rumah_id' => 1,
                 'jenis_pembayaran' => 'iuran keamanan',
                 'jumlah_pembayaran' => 100000,
-                'tanggal_pembayaran' => '2021-01-01',
+                'tanggal_pembayaran' => '2024-01-01',
                 'periode_pembayaran' => 'Bulan',
                 'status_pembayaran' => 'Lunas'
             ],
@@ -36,7 +36,7 @@ class PembayaranSeeder extends Seeder
                 'penghuni_rumah_id' => 2,
                 'jenis_pembayaran' => 'Iuran Kebersihan',
                 'jumlah_pembayaran' => 15000,
-                'tanggal_pembayaran' => '2022-01-01',
+                'tanggal_pembayaran' => '2024-02-01',
                 'periode_pembayaran' => 'Bulan',
                 'status_pembayaran' => 'Lunas'
             ],
@@ -44,7 +44,7 @@ class PembayaranSeeder extends Seeder
                 'penghuni_rumah_id' => 2,
                 'jenis_pembayaran' => 'iuran keamanan',
                 'jumlah_pembayaran' => 100000,
-                'tanggal_pembayaran' => '2022-01-01',
+                'tanggal_pembayaran' => '2024-02-01',
                 'periode_pembayaran' => 'Bulan',
                 'status_pembayaran' => 'Lunas'
             ],
@@ -52,7 +52,7 @@ class PembayaranSeeder extends Seeder
                 'penghuni_rumah_id' => 3,
                 'jenis_pembayaran' => 'Iuran Kebersihan',
                 'jumlah_pembayaran' => 15000,
-                'tanggal_pembayaran' => '2023-01-01',
+                'tanggal_pembayaran' => '2024-03-01',
                 'periode_pembayaran' => 'Bulan',
                 'status_pembayaran' => 'Lunas'
             ],
@@ -60,7 +60,7 @@ class PembayaranSeeder extends Seeder
                 'penghuni_rumah_id' => 3,
                 'jenis_pembayaran' => 'iuran keamanan',
                 'jumlah_pembayaran' => 100000,
-                'tanggal_pembayaran' => '2023-01-01',
+                'tanggal_pembayaran' => '2024-03-01',
                 'periode_pembayaran' => 'Bulan',
                 'status_pembayaran' => 'Lunas'
             ],

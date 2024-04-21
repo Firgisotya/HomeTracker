@@ -24,7 +24,7 @@ class PenghuniRumahSeeder extends Seeder
             ],
             [
                 'penghuni_id' => 2,
-                'rumah_id' => 1,
+                'rumah_id' => 2,
                 'tanggal_masuk' => '2022-01-01',
                 'tanggal_keluar' => '2022-12-31'
             ],
