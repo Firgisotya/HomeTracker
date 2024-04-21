@@ -97,7 +97,7 @@ const IndexRumah = () => {
                     <td>{item.rumah.nomor_rumah}</td>
                     <td>{item.rumah.status_rumah}</td>
                     <td>
-                      <div className="dropdown">
+                      <div className="dropdown z-50">
                         <button
                           type="button"
                           className="btn p-0 dropdown-toggle hide-arrow"
@@ -111,6 +111,9 @@ const IndexRumah = () => {
                           </Link>
                           <Link to={`/rumah/detail/${item.id}`} className="dropdown-item">
                             <i className="bx bx-show me-1" /> Detail
+                          </Link>
+                          <Link to={`/rumah/${item.id}/history`} className="dropdown-item">
+                            <i className="bx bx-show me-1" /> History
                           </Link>
                           <button onClick={() => handleDelete(item.id)} className="dropdown-item">
                             <i className="bx bx-trash me-1" /> Delete

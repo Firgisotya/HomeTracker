@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RumahRequest;
+use App\Models\Pembayaran;
 use App\Models\PenghuniRumah;
 use App\Models\Rumah;
 use Illuminate\Http\Request;
@@ -84,8 +85,14 @@ class RumahController extends Controller
     public function show($id)
     {
         try {
-            $data = PenghuniRumah::with('rumah', 'penghuni')->where('rumah_id', $id)->first();
-            if(!$data){
+            $detail = PenghuniRumah::with('rumah', 'penghuni')->where('rumah_id', $id)->first();
+            $history = Pembayaran::select('pembayaran.*', 'penghuni_rumah.*', 'rumah.*', 'penghuni.*')
+                ->join('penghuni_rumah', 'penghuni_rumah.id', '=', 'pembayaran.penghuni_rumah_id')
+                ->join('rumah', 'rumah.id', '=', 'penghuni_rumah.rumah_id')
+                ->join('penghuni', 'penghuni.id', '=', 'penghuni_rumah.penghuni_id')
+                ->where('penghuni_rumah.rumah_id', $id)
+                ->get();
+            if (!$detail) {
                 return response()->json([
                     'status' => 'error',
                     'message' => 'Data rumah tidak ditemukan'
@@ -94,7 +101,8 @@ class RumahController extends Controller
             return response()->json([
                 'status' => 'success',
                 'message' => 'Data rumah berhasil diambil',
-                'data' => $data
+                'detail' => $detail,
+                'history' => $history 
             ]);
         } catch (\Throwable $th) {
             return response()->json([
@@ -108,8 +116,8 @@ class RumahController extends Controller
     {
         try {
             $data = PenghuniRumah::with('rumah', 'penghuni')->where('rumah_id', $id)->first();
-            $history = PenghuniRumah::with('rumah')->where('rumah_id', $id)->where('tanggal_keluar', '!=', null)->get();
-            if(!$data || !$history){
+            $history = PenghuniRumah::with('rumah', 'penghuni')->where('rumah_id', $id)->where('tanggal_keluar', '!=', null)->get();
+            if (!$data || !$history) {
                 return response()->json([
                     'status' => 'error',
                     'message' => 'Data rumah tidak ditemukan'
@@ -152,7 +160,7 @@ class RumahController extends Controller
     {
         try {
             $data = PenghuniRumah::with('rumah', 'penghuni')->where('rumah_id', $id)->first();
-            if(!$data){
+            if (!$data) {
                 return response()->json([
                     'status' => 'error',
                     'message' => 'Data rumah tidak ditemukan'
@@ -197,7 +205,7 @@ class RumahController extends Controller
     {
         try {
             $data = PenghuniRumah::with('rumah')->where('rumah_id', $id)->first();
-            if(!$data){
+            if (!$data) {
                 return response()->json([
                     'status' => 'error',
                     'message' => 'Data rumah tidak ditemukan'

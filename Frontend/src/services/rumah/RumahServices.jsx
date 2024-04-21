@@ -23,13 +23,13 @@ export const getAllRumah = async () => {
 export const getRumahById = async (id) => {
     const authHeader = await getAuthHeader()
     const response = await axios.get(`${apiURL}/rumah/${id}`, authHeader);
-    return response.data.data;
+    return response.data;
 }
 
 export const historyRumahById = async (id) => {
     const authHeader = await getAuthHeader()
     const response = await axios.get(`${apiURL}/rumah/${id}/history`, authHeader);
-    return response.data.data;
+    return response.data;
 }
 
 export const createRumah = async (data) => {
