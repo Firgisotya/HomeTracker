@@ -14,6 +14,8 @@ const DetailRumah = () => {
   const [status_penghuni, setStatusPenghuni] = useState("");
   const [status_pernikahan, setStatusPernikahan] = useState("");
   const [foto_ktp, setFotoKtp] = useState("");
+  const [tanggal_masuk, setTanggalMasuk] = useState("");
+  const [tanggal_keluar, setTanggalKeluar] = useState("");
   const [history, setHistory] = useState([]);
 
   const fetchDetailRumah = async () => {
@@ -30,6 +32,8 @@ const DetailRumah = () => {
       setStatusPenghuni(detail.penghuni.status_penghuni);
       setStatusPernikahan(detail.penghuni.status_pernikahan);
       setFotoKtp(detail.penghuni.foto_ktp);
+      setTanggalMasuk(detail.tanggal_masuk);
+      setTanggalKeluar(detail.tanggal_keluar);
       setHistory(history);
     } catch (error) {
       console.error("Error fetching customer data: ", error);
@@ -82,6 +86,14 @@ const DetailRumah = () => {
                       <th scope="row">Status Rumah</th>
                       <td>{status_rumah}</td>
                     </tr>
+                    <tr>
+                      <th scope="row">Tanggal Masuk</th>
+                      <td>{tanggal_masuk}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Tanggal Keluar</th>
+                      <td>{tanggal_keluar ? tanggal_keluar : '-'}</td>
+                    </tr>
                   </tbody>
                 </div>
               </div>
@@ -122,12 +134,16 @@ const DetailRumah = () => {
                 <h5>
                   <strong>Foto KTP</strong>
                 </h5>
-                <img
+                {foto_ktp ? (
+                  <img
                   src={`${storageURL}/${foto_ktp}`}
-                  alt="Rumah"
+                  alt=""
                   className="img-fluid rounded-3"
                   style={{ width: 300 }}
                 />
+                ) : (
+                  <p>Foto KTP tidak tersedia</p>  
+                )}
               </div>
             </div>
           </div>

@@ -3,77 +3,77 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Select from "react-select";
 import { createPembayaran } from "../../services/pembayaran/PembayaranServices";
-import { getAllPenghuni } from "../../services/penghuni/PenghuniServices";
+import { getAllPenghuniRumah } from "../../services/penghuni_rumah/PenghuniRumahServices";
 
 const CreatePembayaran = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const [penghuni, setPenghuni] = useState([]);
-    const [jenis_pembayaran, setJenisPembayaran] = useState("");
-    const [jumlah_pembayaran, setJumlahPembayaran] = useState("");
-    const [tanggal_pembayaran, setTanggalPembayaran] = useState("");
-    const [periode_pembayaran, setPeriodePembayaran] = useState("");
-    const [status_pembayaran, setStatusPembayaran] = useState("");
+  const [penghuniRumah, setPenghuniRumah] = useState([]);
+  const [jenis_pembayaran, setJenisPembayaran] = useState("");
+  const [jumlah_pembayaran, setJumlahPembayaran] = useState("");
+  const [tanggal_pembayaran, setTanggalPembayaran] = useState("");
+  const [periode_pembayaran, setPeriodePembayaran] = useState("");
+  const [status_pembayaran, setStatusPembayaran] = useState("");
 
-    const handleSelectPenghuni = async (selectPenghuni) => {
-        setPenghuni(selectPenghuni);
-    }
+  const handleSelectPenghuniRumah = async (selectPenghuni) => {
+    setPenghuniRumah(selectPenghuni);
+  };
 
-    const fetchPenghuni = async () => {
-        try {
-            const response = await getAllPenghuni();
-            const data = response.map((item) => {
-                return {
-                    value: item.id,
-                    label: item.nama_lengkap
-                }
-            });
-            setPenghuni(data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const data = {
-            penghuni_id: penghuni.value,
-            jenis_pembayaran: jenis_pembayaran,
-            jumlah_pembayaran: jumlah_pembayaran,
-            tanggal_pembayaran: tanggal_pembayaran,
-            periode_pembayaran: periode_pembayaran,
-            status_pembayaran: status_pembayaran
+  const fetchPenghuniRumah = async () => {
+    try {
+      const response = await getAllPenghuniRumah();
+      const data = response.map((item) => {
+        return {
+          value: item.id,
+          label: item.penghuni.nama_lengkap,
         };
-
-        try {
-            const response = await createPembayaran(data);
-            console.log(response);
-            Swal.fire({
-                icon: "success",
-                title: "Berhasil",
-                text: "Pembayaran berhasil ditambahkan",
-            });
-            navigate("/pembayaran");
-        } catch (error) {
-            console.log(error);
-            Swal.fire({
-                icon: "error",
-                title: "Gagal",
-                text: "Pembayaran gagal ditambahkan",
-            });
-        }
-        
+      });
+      setPenghuniRumah(data);
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    useEffect(() => {
-        fetchPenghuni();
-    }, [])
-    
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = {
+      penghuni_rumah_id: penghuniRumah.value,
+      jenis_pembayaran: jenis_pembayaran,
+      jumlah_pembayaran: jumlah_pembayaran,
+      tanggal_pembayaran: tanggal_pembayaran,
+      periode_pembayaran: periode_pembayaran,
+      status_pembayaran: status_pembayaran,
+    };
+
+    try {
+      const response = await createPembayaran(data);
+      console.log(response);
+      Swal.fire({
+        icon: "success",
+        title: "Berhasil",
+        text: "Pembayaran berhasil ditambahkan",
+      });
+      navigate("/pembayaran");
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Gagal",
+        text: "Pembayaran gagal ditambahkan",
+      });
+    }
+  };
+
+  useEffect(() => {
+    fetchPenghuniRumah();
+  }, []);
+
   return (
     <>
       <div className="container-xxl flex-grow-1 container-p-y">
         <h4 className="fw-bold py-3 mb-4">
-          <span className="text-muted fw-light">Pembayaran/</span> Tambah Pembayaran
+          <span className="text-muted fw-light">Pembayaran/</span> Tambah
+          Pembayaran
         </h4>
         {/* Basic Layout & Basic with Icons */}
         <div className="row">
@@ -90,13 +90,15 @@ const CreatePembayaran = () => {
               <div className="card-body">
                 <form>
                   <div className="row mb-3">
-                    <label
-                      className="col-sm-2 col-form-label"
-                    >
+                    <label className="col-sm-2 col-form-label">
                       Nama Penghuni
                     </label>
                     <div className="col-sm-10">
-                    <Select options={penghuni} onChange={handleSelectPenghuni} />
+                      <Select
+                        options={penghuniRumah}
+                        onChange={handleSelectPenghuniRumah}
+                        placeholder="Pilih Penghuni"
+                      />
                     </div>
                   </div>
                   <div className="row mb-3">
@@ -110,15 +112,15 @@ const CreatePembayaran = () => {
                         onChange={(e) => setJenisPembayaran(e.target.value)}
                       >
                         <option value="">Pilih Jenis Pembayaran</option>
-                        <option value="Iuran Kebersihan">Iuran Kebersihan</option>
+                        <option value="Iuran Kebersihan">
+                          Iuran Kebersihan
+                        </option>
                         <option value="Iuran Keamanan">Iuran Keamanan</option>
                       </select>
                     </div>
                   </div>
                   <div className="row mb-3">
-                    <label
-                      className="col-sm-2 col-form-label"
-                    >
+                    <label className="col-sm-2 col-form-label">
                       Jumlah Pembayaran
                     </label>
                     <div className="col-sm-10">
@@ -132,9 +134,7 @@ const CreatePembayaran = () => {
                     </div>
                   </div>
                   <div className="row mb-3">
-                    <label
-                      className="col-sm-2 col-form-label"
-                    >
+                    <label className="col-sm-2 col-form-label">
                       Tanggal Pembayaran
                     </label>
                     <div className="col-sm-10">
@@ -181,7 +181,11 @@ const CreatePembayaran = () => {
                   </div>
                   <div className="row justify-content-end">
                     <div className="col-sm-10">
-                      <button type="submit" onClick={handleSubmit} className="btn btn-primary">
+                      <button
+                        type="submit"
+                        onClick={handleSubmit}
+                        className="btn btn-primary"
+                      >
                         Simpan
                       </button>
                     </div>
@@ -193,7 +197,7 @@ const CreatePembayaran = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default CreatePembayaran
+export default CreatePembayaran;

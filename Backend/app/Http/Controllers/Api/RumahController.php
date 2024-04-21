@@ -84,8 +84,15 @@ class RumahController extends Controller
      */
     public function show($id)
     {
+        // current date
+        $date = date('Y-m-d');
         try {
-            $detail = PenghuniRumah::with('rumah', 'penghuni')->where('rumah_id', $id)->first();
+            $detail = PenghuniRumah::with('rumah', 'penghuni')
+                ->where('rumah_id', $id)
+                ->whereHas('rumah', function ($query) {
+                    $query->where('status_rumah', 'Dihuni');
+                })
+                ->first();
             $history = Pembayaran::select('pembayaran.*', 'penghuni_rumah.*', 'rumah.*', 'penghuni.*')
                 ->join('penghuni_rumah', 'penghuni_rumah.id', '=', 'pembayaran.penghuni_rumah_id')
                 ->join('rumah', 'rumah.id', '=', 'penghuni_rumah.rumah_id')
@@ -102,7 +109,7 @@ class RumahController extends Controller
                 'status' => 'success',
                 'message' => 'Data rumah berhasil diambil',
                 'detail' => $detail,
-                'history' => $history 
+                'history' => $history
             ]);
         } catch (\Throwable $th) {
             return response()->json([
@@ -115,12 +122,17 @@ class RumahController extends Controller
     public function history($id)
     {
         try {
-            $data = PenghuniRumah::with('rumah', 'penghuni')->where('rumah_id', $id)->first();
+            $data = PenghuniRumah::with('rumah', 'penghuni')
+                ->where('rumah_id', $id)
+                ->whereHas('rumah', function ($query) {
+                    $query->where('status_rumah', 'Dihuni');
+                })
+                ->first();
             $history = PenghuniRumah::with('rumah', 'penghuni')->where('rumah_id', $id)->where('tanggal_keluar', '!=', null)->get();
-            if (!$data || !$history) {
+            if (!$history) {
                 return response()->json([
                     'status' => 'error',
-                    'message' => 'Data rumah tidak ditemukan'
+                    'message' => 'Data history tidak ditemukan'
                 ], 404);
             }
             return response()->json([
@@ -175,7 +187,8 @@ class RumahController extends Controller
                 PenghuniRumah::where('rumah_id', $id)->update([
                     'penghuni_id' => $request->penghuni_id,
                     'rumah_id' => $id, // 'rumah_id' => $request->rumah_id,
-                    'tanggal_masuk' => $request->tanggal_masuk
+                    'tanggal_masuk' => $request->tanggal_masuk,
+                    'tanggal_keluar' => $request->tanggal_keluar
                 ]);
             } else {
                 PenghuniRumah::where('rumah_id', $id)->update([
@@ -185,6 +198,25 @@ class RumahController extends Controller
             return response()->json([
                 'status' => 'success',
                 'message' => 'Data rumah berhasil diubah',
+                'data' => $data
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    public function updateStatusRumah($id)
+    {
+        try {
+            $data = Rumah::where('id', $id)->update([
+                'status_rumah' => 'Tidak Dihuni'
+            ]);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Status rumah berhasil diubah',
                 'data' => $data
             ]);
         } catch (\Throwable $th) {

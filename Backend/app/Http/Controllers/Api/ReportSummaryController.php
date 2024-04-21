@@ -57,9 +57,27 @@ class ReportSummaryController extends Controller
      * @param  \App\Models\ReportSummary  $reportSummary
      * @return \Illuminate\Http\Response
      */
-    public function show(ReportSummary $reportSummary)
+    public function show($id)
     {
-        //
+        try {
+            $data = ReportSummary::select('report_summary.*', 'penghuni_rumah.penghuni_id', 'penghuni_rumah.rumah_id', 'penghuni.nama_lengkap', 'rumah.nomor_rumah', 'pembayaran.*', 'pengeluaran.*')
+                ->join('penghuni_rumah', 'report_summary.penghuni_rumah_id', '=', 'penghuni_rumah.id')
+                ->join('penghuni', 'penghuni_rumah.penghuni_id', '=', 'penghuni.id')
+                ->join('rumah', 'penghuni_rumah.rumah_id', '=', 'rumah.id')
+                ->join('pembayaran', 'report_summary.pembayaran_id', '=', 'pembayaran.id')
+                ->join('pengeluaran', 'report_summary.pengeluaran_id', '=', 'pengeluaran.id')
+                ->where('report_summary.id', $id)
+                ->first();
+            return response()->json([
+                'status' => 'success',
+                'data' => $data
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -68,7 +86,7 @@ class ReportSummaryController extends Controller
      * @param  \App\Models\ReportSummary  $reportSummary
      * @return \Illuminate\Http\Response
      */
-    public function edit(ReportSummary $reportSummary)
+    public function edit($id)
     {
         //
     }
@@ -80,7 +98,7 @@ class ReportSummaryController extends Controller
      * @param  \App\Models\ReportSummary  $reportSummary
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ReportSummary $reportSummary)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -91,7 +109,7 @@ class ReportSummaryController extends Controller
      * @param  \App\Models\ReportSummary  $reportSummary
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ReportSummary $reportSummary)
+    public function destroy($id)
     {
         //
     }

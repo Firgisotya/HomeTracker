@@ -49,7 +49,6 @@ const IndexReportSummary = () => {
                 <th>Tahun</th>
                 <th>Pemasukan</th>
                 <th>Pengeluaran</th>
-                <th>Actions</th>
               </tr>
             </thead>
             <tbody className="table-border-bottom-0">
@@ -60,37 +59,6 @@ const IndexReportSummary = () => {
                   <td>{item.tahun}</td>
                   <td>{item.pemasukan ? `Rp ${item.pemasukan}` : '-'}</td>
                   <td>{item.pengeluaran ? `Rp ${item.pengeluaran}` : '-'}</td>
-                  <td>
-                    <div className="dropdown">
-                      <button
-                        type="button"
-                        className="btn p-0 dropdown-toggle hide-arrow"
-                        data-bs-toggle="dropdown"
-                      >
-                        <i className="bx bx-dots-vertical-rounded" />
-                      </button>
-                      <div className="dropdown-menu">
-                        {/* <Link
-                            to={`/penghuni_rumah/edit/${item.id}`}
-                            className="dropdown-item"
-                          >
-                            <i className="bx bx-edit-alt me-1" /> Edit
-                          </Link>
-                          <Link
-                            to={`/penghuni_rumah/detail/${item.id}`}
-                            className="dropdown-item"
-                          >
-                            <i className="bx bx-show me-1" /> Detail
-                          </Link> */}
-                        {/* <button
-                          onClick={() => handleDelete(item.id)}
-                          className="dropdown-item"
-                        >
-                          <i className="bx bx-trash me-1" /> Delete
-                        </button> */}
-                      </div>
-                    </div>
-                  </td>
                 </tr>
               ))}
             </tbody>

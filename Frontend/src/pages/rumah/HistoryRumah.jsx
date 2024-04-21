@@ -21,20 +21,34 @@ const HistoryRumah = () => {
     const endIndex = startIndex + itemsPerPage;
     const currentHistory = historyRumah.slice(startIndex, endIndex);
 
-  const fetchHistoryRumah = async () => {
-    try {
-      const response = await historyRumahById(id);
-      const resRumah = response.rumah;
-      const resHistory = response.history;
-      setNomorRumah(resRumah.rumah.nomor_rumah);
-      setStatusRumah(resRumah.rumah.status_rumah);
-      setPenghuniSaatIni(resRumah.penghuni.nama_lengkap);
-      setStatusPenghuni(resRumah.penghuni.status_penghuni);
-      setHistoryRumah(resHistory);
-    } catch (error) {
-      console.error("Error fetching customer data: ", error);
+    const fetchHistoryRumah = async () => {
+      try {
+        const response = await historyRumahById(id);
+        const resRumah = response.rumah;
+        const resHistory = response.history;
+    
+        // Mengatur data rumah jika ada
+        if (resRumah) {
+          setNomorRumah(resRumah.rumah.nomor_rumah);
+          setStatusRumah(resRumah.rumah.status_rumah);
+          setPenghuniSaatIni(resRumah.penghuni.nama_lengkap);
+          setStatusPenghuni(resRumah.penghuni.status_penghuni);
+        } else {
+          // Mengatur nilai default jika resRumah null
+          setNomorRumah("");
+          setStatusRumah("");
+          setPenghuniSaatIni("");
+          setStatusPenghuni("");
+        }
+    
+        // Menetapkan data history
+        setHistoryRumah(resHistory);
+        console.log(resHistory);
+      } catch (error) {
+        console.error("Error fetching customer data: ", error);
+      }
     }
-  }
+    
 
   useEffect(() => {
     fetchHistoryRumah();
@@ -68,7 +82,7 @@ const HistoryRumah = () => {
                     <h5>:</h5>
                   </th>
                   <td>
-                    <h5>{nomor_rumah}</h5>
+                    <h5>{nomor_rumah ? nomor_rumah : '-'}</h5>
                   </td>
                 </tr>
                 <tr>
@@ -81,7 +95,7 @@ const HistoryRumah = () => {
                     <h5>:</h5>
                   </th>
                   <td>
-                    <h5>{status_rumah}</h5>
+                  <h5>{status_rumah ? status_rumah : 'Tidak Dihuni'}</h5>
                   </td>
                 </tr>
                 <tr>
@@ -94,7 +108,7 @@ const HistoryRumah = () => {
                     <h5>:</h5>
                   </th>
                   <td>
-                    <h5>{penghuni_saat_ini}</h5>
+                  <h5>{penghuni_saat_ini ? penghuni_saat_ini : '-'}</h5>
                   </td>
                 </tr>
                 <tr>
@@ -107,7 +121,7 @@ const HistoryRumah = () => {
                     <h5>:</h5>
                   </th>
                   <td>
-                    <h5>{status_penghuni}</h5>
+                  <h5>{status_penghuni ? status_penghuni : '-'}</h5>
                   </td>
                 </tr>
               </tbody>

@@ -1,19 +1,44 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import Select from "react-select";
 import { createRumah } from "../../services/rumah/RumahServices";
+import { getAllPenghuni } from "../../services/penghuni/PenghuniServices";
 
 const CreateRumah = () => {
   const navigate = useNavigate();
 
   const [nomor_rumah, setNomorRumah] = useState("");
   const [status_rumah, setStatusRumah] = useState("");
+  const [penghuni, setPenghuni] = useState([]);
+  const [tanggalMasuk, setTanggalMasuk] = useState("");
+
+  const fetchPenghuni = async () => {
+    try {
+      const response = await getAllPenghuni()
+      const data = response.map((item) => {
+        return {
+          value: item.id,
+          label: item.nama_lengkap
+        }
+      })
+      setPenghuni(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleSelectPenghuni = async (selectOption) => {
+    setPenghuni(selectOption);
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
       nomor_rumah: nomor_rumah,
       status_rumah: status_rumah,
+      penghuni_id: penghuni.value,
+      tanggal_masuk: tanggalMasuk
     }
 
     try {
@@ -34,6 +59,10 @@ const CreateRumah = () => {
       });
     }
   }
+
+  useEffect(() => {
+    fetchPenghuni();
+  }, [])
 
   return (
     <>
@@ -83,10 +112,34 @@ const CreateRumah = () => {
                       >
                         <option value="">Pilih Status Rumah</option>
                         <option value="Dihuni">Dihuni</option>
-                        <option value="Kosong">Kosong</option>
+                        <option value="Tidak Dihuni">Tidak Dihuni</option>
                       </select>
                     </div>
                   </div>
+                  {status_rumah === `Dihuni` && (
+                    <>
+                      <div className="row mb-3">
+                    <label
+                      className="col-sm-2 col-form-label"
+                    >
+                      Nama Penghuni
+                    </label>
+                    <div className="col-sm-10">
+                      <Select options={penghuni} onChange={handleSelectPenghuni} placeholder="Pilih Penghuni" />
+                    </div>
+                  </div>
+                  <div className="row mb-3">
+                    <label
+                      className="col-sm-2 col-form-label"
+                    >
+                      Tanggal Masuk
+                    </label>
+                    <div className="col-sm-10">
+                      <input type="date" className="form-control" value={tanggalMasuk} onChange={(e) => setTanggalMasuk(e.target.value)} />
+                    </div>
+                  </div>
+                    </>
+                  )}
                   <div className="row justify-content-end">
                     <div className="col-sm-10">
                       <button type="submit" onClick={handleSubmit} className="btn btn-primary">

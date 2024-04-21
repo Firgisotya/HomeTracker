@@ -1,7 +1,9 @@
 import { React, useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import Select from "react-select";
 import { getRumahById, updateRumah } from "../../services/rumah/RumahServices";
+import { getAllPenghuni } from "../../services/penghuni/PenghuniServices";
 
 const EditRumah = () => {
   const navigate = useNavigate();
@@ -9,12 +11,42 @@ const EditRumah = () => {
 
   const [nomor_rumah, setNomorRumah] = useState("");
   const [status_rumah, setStatusRumah] = useState("");
+  const [penghuni, setPenghuni] = useState([]);
+  const [selectedPenghuni, setSelectedPenghuni] = useState(null);
+  const [tanggalMasuk, setTanggalMasuk] = useState("");
+  const [tanggalKeluar, setTanggalKeluar] = useState("");
+
+  const handleSelectPenghuni = async (selectOptions) => {
+    setSelectedPenghuni(selectOptions);
+  }
+
+  const fetchPenghuni = async () => {
+    try {
+      const response = await getAllPenghuni()
+      const data = response.map((item) => {
+        return {
+          value: item.id,
+          label: item.nama_lengkap
+        }
+      })
+      setPenghuni(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const fetchRumahById = async () => {
     try {
       const response = await getRumahById(id);
-      setNomorRumah(response.nomor_rumah);
-      setStatusRumah(response.status_rumah);
+      const detail = response.detail;
+      setNomorRumah(detail.rumah.nomor_rumah);
+      setStatusRumah(detail.rumah.status_rumah);
+      setSelectedPenghuni({
+        value: detail.penghuni.id,
+        label: detail.penghuni.nama_lengkap
+      })
+      setTanggalMasuk(detail.tanggal_masuk);
+      setTanggalKeluar(detail.tanggal_keluar);
     } catch (error) {
       console.error("Error fetching rumah by id: ", error);
     }
@@ -25,6 +57,9 @@ const EditRumah = () => {
     const data = {
       nomor_rumah: nomor_rumah,
       status_rumah: status_rumah,
+      penghuni_id: selectedPenghuni.value,
+      tanggal_masuk: tanggalMasuk,
+      tanggal_keluar: tanggalKeluar
     }
 
     try {
@@ -47,6 +82,7 @@ const EditRumah = () => {
   }
 
   useEffect(() => {
+    fetchPenghuni();
     fetchRumahById();
   }, []);
 
@@ -102,6 +138,44 @@ const EditRumah = () => {
                       </select>
                     </div>
                   </div>
+                  {status_rumah === `Dihuni` && (
+                    <>
+                      <div className="row mb-3">
+                    <label
+                      className="col-sm-2 col-form-label"
+                    >
+                      Nama Penghuni
+                    </label>
+                    <div className="col-sm-10">
+                    <Select 
+                      options={penghuni} 
+                      value={selectedPenghuni}
+                      onChange={handleSelectPenghuni} 
+                      placeholder="Pilih Penghuni" />
+                    </div>
+                  </div>
+                  <div className="row mb-3">
+                    <label
+                      className="col-sm-2 col-form-label"
+                    >
+                      Tanggal Masuk
+                    </label>
+                    <div className="col-sm-10">
+                      <input type="date" className="form-control" value={tanggalMasuk} onChange={(e) => setTanggalMasuk(e.target.value)} />
+                    </div>
+                  </div>
+                  <div className="row mb-3">
+                    <label
+                      className="col-sm-2 col-form-label"
+                    >
+                      Tanggal Keluar
+                    </label>
+                    <div className="col-sm-10">
+                      <input type="date" className="form-control" value={tanggalKeluar} onChange={(e) => setTanggalKeluar(e.target.value)} />
+                    </div>
+                  </div>
+                    </>
+                  )}
                   <div className="row justify-content-end">
                     <div className="col-sm-10">
                       <button type="submit" onClick={handleSubmit} className="btn btn-primary">

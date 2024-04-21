@@ -5,7 +5,7 @@ import { getToken } from '../storage/StorageServices'
 const apiURL = BaseURL().api;
 export const storageURL = BaseURL().storage;
 
-const getAuthHeader = async () => {
+export const getAuthHeader = async () => {
     const token = await getToken();
     return {
         headers: {
@@ -41,6 +41,11 @@ export const createRumah = async (data) => {
 export const updateRumah = async (id, data) => {
     const authHeader = await getAuthHeader()
     const response = await axios.post(`${apiURL}/rumah/${id}?_method=PUT`, data, authHeader);
+    return response.data.data;
+}
+
+export const updateStatusRumah = async (id) => {
+    const response = await axios.post(`${apiURL}/rumah/${id}/status_rumah`);
     return response.data.data;
 }
 

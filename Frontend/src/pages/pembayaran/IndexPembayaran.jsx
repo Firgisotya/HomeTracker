@@ -97,7 +97,7 @@ const IndexPembayaran = () => {
                   <tr>
                     <td>{(currentPage - 1) * itemsPerPage + index + 1}</td>
                     <td>
-                      <strong>{item.penghuni?.nama_lengkap}</strong>
+                      <strong>{item.nama_lengkap}</strong>
                     </td>
                     <td>{item.jenis_pembayaran}</td>
                     <td>Rp {item.jumlah_pembayaran}</td>

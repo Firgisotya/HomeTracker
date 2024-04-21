@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\PenghuniController;
 use App\Http\Controllers\Api\PenghuniRumahController;
 use App\Http\Controllers\Api\ReportSummaryController;
 use App\Http\Controllers\Api\RumahController;
+use App\Http\Controllers\Api\VisualizationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,4 +34,10 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::apiResource('/pembayaran', PembayaranController::class);
     Route::get('/report_summary', [ReportSummaryController::class, 'index']);
     Route::apiResource('/pengeluaran', PengeluaranController::class);
+
+    // visualization
+    Route::get('/count_all_section', [VisualizationController::class, 'countAllSections']);
+    Route::get('/report_transaction', [VisualizationController::class, 'reportTransaction']);
 });
+
+Route::post('/rumah/{id}/status_rumah', [RumahController::class, 'updateStatusRumah']);
