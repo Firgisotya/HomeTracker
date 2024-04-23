@@ -4,7 +4,7 @@ Aplikasi ini digunakan untuk mengelola administrasi pembayaran dan pengeluaran i
 
 ## Daftar Isi
 
-- [RideRent App (Aplikasi Administrasi Perumahan)](#riderent-app-aplikasi-administrasi-perumahan)
+- [HomeTracker (Aplikasi Administrasi Perumahan)](#hometracker-aplikasi-administrasi-perumahan)
   - [Daftar Isi](#daftar-isi)
   - [Informasi Proyek](#informasi-proyek)
   - [Persyaratan Sistem](#persyaratan-sistem)
@@ -42,7 +42,7 @@ Clone repositori ini ke dalam direktori komputer anda
 - `cp .env.example .env`
 - `php artisan key:generate`
 - silahkan membuat database dengan contoh
-  <img src="./doc/create_db.png">
+  <img src="./Doc/create_db.png">
 - `php artisan migrate --seed`
 - `php artisan serve`
 
@@ -60,9 +60,9 @@ Clone repositori ini ke dalam direktori komputer anda
 
 ## Daftar Username-Password
 
-| Email             | Password    | Role      |
-| ----------------- | ----------- | --------- |
-| admin@gmail.com   | password    | Admin     |
+| Email             | Password    |
+| ----------------- | ----------- |
+| admin@gmail.com   | password    |
 
 ## Framework
 
@@ -78,11 +78,10 @@ Aplikasi ini menggunakan kombinasi Laravel sebagai backend dan React sebagai fro
 - Dokumentasi React: https://react.dev/
 
 pastikan sudah menjalankan backend
-- Api Postman dapat dilihat pada folder /doc/postman/*
 - User Case Diagram <br/>
-  <img src="./doc/use_case_diagram.png">
+  <img src="./Doc/use_case_diagram.png">
 - Struktur Data Konsep <br/>
-  <img src="./doc/schema_db.png">
+  <img src="./Doc/ERD.png">
   
 
 ## Author
