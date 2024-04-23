@@ -1,10 +1,10 @@
 # HomeTracker (Aplikasi Administrasi Perumahan)
 
-Aplikasi ini digunakan untuk melakukan pemesanan kendaraan dengan beberapa fitur utama, termasuk manajemen pemesanan, persetujuan berjenjang, dashboard grafik pemakaian kendaraan, dan laporan pemesanan yang dapat diexport dalam format Excel.
+Aplikasi ini digunakan untuk mengelola administrasi pembayaran dan pengeluaran iuran bulanan pada perumahan elite.
 
 ## Daftar Isi
 
-- [RideRent App (Aplikasi Pemesanan Kendaraan)](#riderent-app-aplikasi-pemesanan-kendaraan)
+- [RideRent App (Aplikasi Administrasi Perumahan)](#riderent-app-aplikasi-administrasi-perumahan)
   - [Daftar Isi](#daftar-isi)
   - [Informasi Proyek](#informasi-proyek)
   - [Persyaratan Sistem](#persyaratan-sistem)
@@ -20,7 +20,7 @@ Aplikasi ini digunakan untuk melakukan pemesanan kendaraan dengan beberapa fitur
 
 ## Informasi Proyek
 
-Aplikasi ini dibangun untuk memudahkan proses pemesanan kendaraan dengan fitur-fitur yang mencakup manajemen pemesanan, persetujuan berjenjang, dan pelaporan.
+Aplikasi ini dibangun untuk memudahkan proses admjnstrasi iuran bulanan dengan fitur-fitur yang mencakup manajemen pembayaran, manajemen pengeluaran, dan pelaporan.
 
 ## Persyaratan Sistem
 
@@ -56,7 +56,7 @@ Clone repositori ini ke dalam direktori komputer anda
 
 1. Akses aplikasi melalui browser dengan [http://localhost:5173](http://localhost:5173)
 2. Login menggunakan akun admin.
-3. Gunakan menu untuk melakukan pemesanan, persetujuan, dan melihat laporan.
+3. Gunakan menu untuk melakukan pembayaran, pengeluaran, dan melihat laporan.
 
 ## Daftar Username-Password
 
