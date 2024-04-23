@@ -66,16 +66,16 @@ Clone repositori ini ke dalam direktori komputer anda
 
 ## Framework
 
-Aplikasi ini menggunakan kombinasi Laravel sebagai backend dan Angular sebagai frontend untuk memastikan kehandalan, keamanan, dan antarmuka pengguna yang responsif.
+Aplikasi ini menggunakan kombinasi Laravel sebagai backend dan React sebagai frontend untuk memastikan kehandalan, keamanan, dan antarmuka pengguna yang responsif.
 
 ### Backend (Laravel)
 - Framework: Laravel
 - Versi Laravel: 9.0
 - Dokumentasi Laravel: https://laravel.com/docs/9.x
 ### Frontend (React)
-- Framework: React Js
+- Framework: React
 - Versi React: 18
-- Dokumentasi React: https://angular.io/docs
+- Dokumentasi React: https://react.dev/
 
 pastikan sudah menjalankan backend
 - Api Postman dapat dilihat pada folder /doc/postman/*
